@@ -20,3 +20,8 @@ steps:
 
 - script: ls -al target/
   displayName: 'show the contents of target folder'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/target/maven-web-application.war'
+    ArtifactName: 'maven-web-application.war'
+    publishLocation: 'Container'
