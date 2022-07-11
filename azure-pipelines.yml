@@ -10,10 +10,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    apt install -y default-jdk maven
+    mvn package
+  displayName: 'install jdk and maven'
+
+- script: mvn package
+  displayName: 'run mvn package'
+
+- script: ls -al target/
+  displayName: 'show the contents of target folder'
