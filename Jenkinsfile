@@ -1,18 +1,18 @@
 pipeline {
   agent any
   stages {
-
     stage("maven build") {
-      script {
+      steps {
+        echo "installing all the maven dependencies"
         sh 'mvn install'
       }
     }
 
     stage("maven package") {
-      script {
+      steps {
+        echo "generating the maven package"
         sh 'mvn package'
       }
     }
-
   }
 }
